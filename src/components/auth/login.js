@@ -4,10 +4,7 @@ import {
   iniciarConCorreo,
   registrarConCorreo,
   enviarCorreoRestablecimiento
-} from "../../config/firebase.js";
-/*
-import { iniciarConGoogle, iniciarComoInvitado } from "../../config/firebase.js";
-*/
+} from "../../config/supabase.js";
 
 (function () {
   "use strict";
@@ -151,16 +148,30 @@ import { iniciarConGoogle, iniciarComoInvitado } from "../../config/firebase.js"
   }
 
   function authErrorMessage(error) {
-    const messages = {
-      "auth/invalid-credential": "El correo o la contraseña no son correctos.",
-      "auth/user-not-found": "No existe una cuenta con este correo.",
-      "auth/wrong-password": "El correo o la contraseña no son correctos.",
-      "auth/email-already-in-use": "No es posible realizar esta opción: ese correo ya tiene una cuenta.",
-      "auth/weak-password": "La contraseña debe tener al menos 6 caracteres.",
-      "auth/invalid-email": "Escribe un correo electrónico válido.",
-      "auth/too-many-requests": "Demasiados intentos. Espera un momento y vuelve a intentarlo."
+    const messagesPorCodigo = {
+      invalid_credentials: "El correo o la contraseña no son correctos.",
+      email_not_confirmed: "Confirma tu correo antes de iniciar sesión. Revisa tu bandeja de entrada.",
+      user_already_exists: "No es posible realizar esta opción: ese correo ya tiene una cuenta.",
+      user_already_registered: "No es posible realizar esta opción: ese correo ya tiene una cuenta.",
+      weak_password: "La contraseña debe tener al menos 6 caracteres.",
+      email_address_invalid: "Escribe un correo electrónico válido.",
+      validation_failed: "Escribe un correo electrónico válido.",
+      over_email_send_rate_limit: "Demasiados intentos. Espera un momento y vuelve a intentarlo.",
+      over_request_rate_limit: "Demasiados intentos. Espera un momento y vuelve a intentarlo.",
+      anonymous_provider_disabled: "El acceso como invitado no está disponible en este momento.",
+      signup_disabled: "El registro no está disponible en este momento."
     };
-    return messages[error.code] || "No se pudo completar la operación. Inténtalo de nuevo.";
+    if (messagesPorCodigo[error.code]) return messagesPorCodigo[error.code];
+
+    const mensaje = String(error.message || "").toLowerCase();
+    if (mensaje.includes("invalid login credentials")) return "El correo o la contraseña no son correctos.";
+    if (mensaje.includes("already registered") || mensaje.includes("already exists")) return "No es posible realizar esta opción: ese correo ya tiene una cuenta.";
+    if (mensaje.includes("password should be at least")) return "La contraseña debe tener al menos 6 caracteres.";
+    if (mensaje.includes("unable to validate email") || mensaje.includes("invalid email")) return "Escribe un correo electrónico válido.";
+    if (mensaje.includes("email not confirmed")) return "Confirma tu correo antes de iniciar sesión. Revisa tu bandeja de entrada.";
+    if (mensaje.includes("rate limit")) return "Demasiados intentos. Espera un momento y vuelve a intentarlo.";
+
+    return "No se pudo completar la operación. Inténtalo de nuevo.";
   }
 
   loginForm.addEventListener("submit", async (e) => {
@@ -259,13 +270,19 @@ import { iniciarConGoogle, iniciarComoInvitado } from "../../config/firebase.js"
     setState("state-celebrate");
     signupBtn.classList.add("is-loading");
     try {
-      await registrarConCorreo(
+      const { sesionActiva } = await registrarConCorreo(
         document.getElementById("signup-name").value,
         document.getElementById("signup-email").value,
         signupPassword.value
       );
-      showMessage(signupMessage, "Cuenta creada. Revisa tu Gmail para verificarla.");
-      window.setTimeout(() => { window.location.href = REDIRECT_DESTINATION; }, 700);
+
+      if (sesionActiva) {
+        showMessage(signupMessage, "Cuenta creada. Ya iniciaste sesión.");
+        window.setTimeout(() => { window.location.href = REDIRECT_DESTINATION; }, 700);
+      } else {
+        showMessage(signupMessage, "Cuenta creada. Revisa tu correo para confirmarla antes de iniciar sesión.");
+        window.setTimeout(() => showView("login"), 1400);
+      }
     } catch (error) {
       console.error("Error al registrar la cuenta:", error);
       setState("state-error");
@@ -286,7 +303,7 @@ import { iniciarConGoogle, iniciarComoInvitado } from "../../config/firebase.js"
   });
 
   // ---------------------------------------------------------------------
-  // Google (ambas vistas) — inicia sesión real con Firebase y, si todo
+  // Google (ambas vistas) — inicia sesión real con Supabase y, si todo
   // sale bien, entra directo al chat conectado a la base de datos.
   // ---------------------------------------------------------------------
   document.querySelectorAll('[id^="googleBtn"]').forEach((btn) => {
@@ -298,7 +315,8 @@ import { iniciarConGoogle, iniciarComoInvitado } from "../../config/firebase.js"
 
       try {
         await iniciarConGoogle();
-        window.location.href = REDIRECT_DESTINATION;
+        // Si no hubo error, el navegador ya está redirigiendo a Google y
+        // luego volverá directo a chat.html: aquí no hay nada más que hacer.
       } catch (error) {
         console.error("Error al iniciar sesión con Google:", error);
         btn.classList.remove("is-loading");
@@ -309,7 +327,7 @@ import { iniciarConGoogle, iniciarComoInvitado } from "../../config/firebase.js"
   });
 
   // ---------------------------------------------------------------------
-  // Acceso de invitado: entra con una cuenta anónima de Firebase, para
+  // Acceso de invitado: entra con una cuenta anónima de Supabase, para
   // poder usar el chat con normalidad sin necesitar una cuenta de Google.
   // ---------------------------------------------------------------------
   const guestBtn = document.getElementById("guestBtn");
