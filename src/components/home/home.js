@@ -30,7 +30,7 @@ function startDiagnosis() {
     // Si ya hay una sesión activa (Google o invitado) entramos directo al
     // chat. Si no, mandamos a la pantalla de inicio de sesión para que la
     // persona elija cómo quiere entrar.
-    const destination = auth.currentUser ? "../src/components/chat/chat.html" : "../src/components/auth/login.html";
+    const destination = auth.currentUser ? "src/components/chat/chat.html" : "src/components/auth/login.html";
     showPageLoader(destination);
 }
 

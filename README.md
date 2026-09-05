@@ -4,7 +4,7 @@ Proyecto web estático organizado por componentes.
 
 ## Ejecutar localmente
 
-Abre `public/index.html` en un servidor web local, o instala Firebase CLI y ejecuta `npm run serve`.
+Abre `index.html` en un servidor web local, o instala Firebase CLI y ejecuta `npm run serve`.
 
 ## Desplegar Firebase
 
