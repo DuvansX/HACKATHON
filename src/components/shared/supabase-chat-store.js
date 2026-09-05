@@ -19,17 +19,18 @@ export async function guardarDatosUsuario() {
     if (!usuario) return false;
 
     try {
-        const { error } = await supabase.from("profiles").upsert({
-            id: usuario.uid,
-            email: usuario.email || null,
-            full_name: usuario.displayName || null,
-            avatar_url: usuario.photoURL || null,
-            ultima_actividad_at: new Date().toISOString()
-        });
+        // profiles ya existe para todo usuario autenticado gracias al trigger
+        // "handle_new_user" en auth.users (migración
+        // auto_provision_profile_on_signup); aquí solo refrescamos la
+        // actividad reciente, nunca insertamos.
+        const { error } = await supabase
+            .from("profiles")
+            .update({ ultima_actividad_at: new Date().toISOString() })
+            .eq("id", usuario.uid);
         if (error) throw error;
         return true;
     } catch (error) {
-        console.error("No se pudo guardar el usuario en Supabase.", error);
+        console.error("No se pudo actualizar el usuario en Supabase.", error);
         return false;
     }
 }

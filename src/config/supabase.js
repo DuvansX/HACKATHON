@@ -45,21 +45,22 @@ export function onAuthStateChanged(callback) {
   return () => suscripcion.subscription.unsubscribe();
 }
 
+// Los triggers "handle_new_user" y "handle_user_updated" en auth.users
+// (migración auto_provision_profile_on_signup) ya crean y sincronizan
+// profiles automáticamente en el servidor, con SECURITY DEFINER (no dependen
+// de que exista sesión). Por eso aquí solo actualizamos — nunca insertamos —
+// para no chocar con RLS mientras el correo todavía no está confirmado
+// (en ese momento no hay sesión, así que un intento de insertar sí falla,
+// pero un UPDATE simplemente no afecta filas y no lanza error).
 async function guardarPerfil(user, cambios = {}) {
-  if (!user) return;
+  if (!user || !Object.keys(cambios).length) return;
 
-  const metadata = user.user_metadata || {};
-  const perfil = {
-    id: user.id,
-    email: user.email || null,
-    full_name: metadata.full_name || metadata.name || null,
-    avatar_url: metadata.avatar_url || metadata.picture || null,
-    ultima_actividad_at: new Date().toISOString(),
-    ...cambios
-  };
+  const { error } = await supabase
+    .from("profiles")
+    .update({ ultima_actividad_at: new Date().toISOString(), ...cambios })
+    .eq("id", user.id);
 
-  const { error } = await supabase.from("profiles").upsert(perfil);
-  if (error) console.warn("No se pudo guardar el perfil en Supabase.", error);
+  if (error) console.warn("No se pudo actualizar el perfil en Supabase.", error);
 }
 
 export async function guardarDatosUsuario() {
