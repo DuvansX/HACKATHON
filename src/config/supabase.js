@@ -1,7 +1,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const SUPABASE_URL = "https://nsicxoiopomlnejmyten.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGci••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5zaWN4b2lvcG9tbG5lam15dGVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3ODY0NzksImV4cCI6MjEwMzM2MjQ3OX0.3pPwm5Ewy4NrvV75NKqpqv8PvLFGtV6YVBwau-W4cOs";
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -21,6 +21,7 @@ function normalizarUsuario(user) {
 }
 
 let usuarioActual = null;
+
 
 export const auth = {
   get currentUser() {
