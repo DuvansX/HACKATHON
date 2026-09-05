@@ -53,6 +53,9 @@ const chatModalNameInput = document.getElementById("chat-modal-name-input");
 const chatModalCancel = document.getElementById("chat-modal-cancel");
 const chatModalSubmit = document.getElementById("chat-modal-submit");
 const logoutBtn = document.getElementById("logout-btn");
+const sidebarUserAvatar = document.getElementById("gmail-user-avatar-bottom");
+const sidebarUserAvatarFallback = document.getElementById("gmail-user-avatar-fallback-bottom");
+const sidebarUserName = document.getElementById("gmail-user-name-bottom");
 
 /* En móvil el control vive directamente en la página, no dentro del encabezado.
    Así no queda atrapado debajo de la barra lateral al abrirla. */
@@ -653,6 +656,28 @@ function setDynamicWelcome(user = auth.currentUser) {
     welcomeTitle.textContent = welcomeOptions[Math.floor(Math.random() * welcomeOptions.length)];
 }
 
+function actualizarPerfilSidebar(user = auth.currentUser) {
+    if (!sidebarUserAvatar || !sidebarUserAvatarFallback || !sidebarUserName) return;
+
+    const nombre = (user?.isAnonymous ? "Invitado" : user?.displayName) || user?.email || "Cuenta";
+    sidebarUserName.textContent = nombre;
+
+    const foto = user?.photoURL || "";
+    if (foto) {
+        sidebarUserAvatar.src = foto;
+        sidebarUserAvatar.hidden = false;
+        sidebarUserAvatarFallback.hidden = true;
+        sidebarUserAvatar.onerror = () => {
+            sidebarUserAvatar.hidden = true;
+            sidebarUserAvatarFallback.hidden = false;
+        };
+    } else {
+        sidebarUserAvatar.hidden = true;
+        sidebarUserAvatarFallback.hidden = false;
+        sidebarUserAvatarFallback.textContent = nombre.charAt(0).toUpperCase();
+    }
+}
+
 function setSendButtonState() {
     sendBtn.disabled = isSendingMessage || isWaitingForResponse || !inputField.value.trim();
 }
@@ -1160,6 +1185,7 @@ onAuthStateChanged((user) => {
 
     if (user) {
         setDynamicWelcome(user);
+        actualizarPerfilSidebar(user);
         void guardarDatosUsuario().then((guardado) => {
             if (!guardado) mostrarErrorDeSincronizacion();
         });
