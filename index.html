@@ -13,7 +13,7 @@
 
     <header class="navbar">
         <div class="logo logo-typing" aria-label="IDEAPRO">
-            <img src="../src/assets/images/Logo.png" alt="" class="logo-image">
+            <img src="src/assets/images/Logo.png" alt="" class="logo-image">
 
             <div class="logo-copy" aria-hidden="true">
                 <span>IDEA</span>
@@ -30,7 +30,7 @@
         </nav>
 
         <div class="header-actions">
-            <button class="nav-button" type="button" data-start-diagnosis onclick="startDiagnosis()">
+            <button class="nav-button" type="button" data-start-diagnosis onclick="window.location.assign('src/components/auth/login.html')">
                 Comenzar diagnóstico
             </button>
         </div>
@@ -59,7 +59,7 @@
                 </p>
 
                 <div class="hero-buttons">
-                    <button class="primary-button" type="button" data-start-diagnosis onclick="startDiagnosis()">
+                    <button class="primary-button" type="button" data-start-diagnosis onclick="window.location.assign('src/components/auth/login.html')">
                         Comenzar diagnóstico
                     </button>
 
@@ -192,7 +192,7 @@
                 </h2>
             </div>
 
-            <button class="primary-button" type="button" data-start-diagnosis onclick="startDiagnosis()">
+            <button class="primary-button" type="button" data-start-diagnosis onclick="window.location.assign('src/components/auth/login.html')">
                 Iniciar diagnóstico →
             </button>
 
@@ -238,6 +238,7 @@
     </footer>
 
 
+    <script defer src="src/components/home/logo-animation.js"></script>
     <script type="module" src="src/main.js"></script>
 
 </body>

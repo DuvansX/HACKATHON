@@ -238,48 +238,6 @@ function scrollToSection() {
 window.startDiagnosis = startDiagnosis;
 window.scrollToSection = scrollToSection;
 
-document.addEventListener("DOMContentLoaded", () => {
-    const logoWord = document.querySelector("[data-logo-word]");
-
-    if (!logoWord) {
-        return;
-    }
-
-    const logoWords = ["PRO", "IA", "SANTOTO",];
-    let wordIndex = 0;
-    let characterIndex = logoWords[wordIndex].length;
-    let isDeleting = true;
-
-    function animateLogoWord() {
-        const currentWord = logoWords[wordIndex];
-        let delay;
-
-        if (isDeleting) {
-            characterIndex -= 1;
-            logoWord.textContent = currentWord.slice(0, characterIndex);
-            delay = 100;
-
-            if (characterIndex === 0) {
-                wordIndex = (wordIndex + 1) % logoWords.length;
-                isDeleting = false;
-                delay = 350;
-            }
-        } else {
-            characterIndex += 1;
-            logoWord.textContent = logoWords[wordIndex].slice(0, characterIndex);
-            delay = 120;
-
-            if (characterIndex === logoWords[wordIndex].length) {
-                isDeleting = true;
-                delay = 3000;
-            }
-        }
-
-        window.setTimeout(animateLogoWord, delay);
-    }
-
-    window.setTimeout(animateLogoWord, 1600);
-});
 /* ======================================================
    Accesibilidad — panel flotante
    ====================================================== */
