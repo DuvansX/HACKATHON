@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101826">
+  <link rel="icon" href="../../assets/images/Logo.png" type="image/png">
+  <title>Iniciar sesión — IDEAPRO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/styles.css">
+</head>
+
+<body>
+  <a href="../../../public/index.html" class="back-button" id="backButton" aria-label="Volver al inicio">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </svg>
+  </a>
+  <button type="button" class="theme-toggle" id="themeToggle" aria-label="Cambiar a modo oscuro" aria-pressed="false">
+    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.6"
+        stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" />
+      <path
+        d="M12 2v2M12 20v2M4 12H2M22 12h-2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+        stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+    </svg>
+  </button>
+  <div class="sparkles" aria-hidden="true">
+    <div class="sparkles" id="sparkles" aria-hidden="true"></div>
+  </div>
+  <div class="stage">
+    <div class="auth-card" id="authCard">
+
+      <!-- LEFT: Illustration panel -->
+      <section class="illustration-panel" aria-hidden="true">
+        <div class="clouds">
+          <span class="cloud cloud--1"></span>
+          <span class="cloud cloud--2"></span>
+          <span class="cloud cloud--3"></span>
+        </div>
+
+        <div class="cast" id="cast">
+          <!-- Purple tall character -->
+          <div class="char char--purple" data-char="purple">
+            <div class="face">
+              <div class="eyes">
+                <span class="eye"><span class="pupil"></span></span>
+                <span class="eye"><span class="pupil"></span></span>
+              </div>
+              <div class="mouth"></div>
+            </div>
+          </div>
+
+          <!-- Black medium character -->
+          <div class="char char--black" data-char="black">
+            <div class="face">
+              <div class="eyes">
+                <span class="eye"><span class="pupil"></span></span>
+                <span class="eye"><span class="pupil"></span></span>
+              </div>
+              <div class="mouth"></div>
+            </div>
+          </div>
+
+          <!-- Yellow tombstone character -->
+          <div class="char char--yellow" data-char="yellow">
+            <div class="face">
+              <div class="eyes eyes--single">
+                <span class="eye eye--dot"></span>
+              </div>
+              <div class="mouth mouth--flat"></div>
+            </div>
+          </div>
+
+          <!-- Orange semicircle character -->
+          <div class="char char--orange" data-char="orange">
+            <div class="face">
+              <div class="eyes">
+                <span class="eye"><span class="pupil"></span></span>
+                <span class="eye"><span class="pupil"></span></span>
+              </div>
+              <div class="mouth"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: Form panel -->
+      <section class="form-panel">
+        <div class="form-inner">
+
+          <a href="../../../public/index.html" class="brand-mark" aria-label="Volver al inicio de IDEAPRO">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M14 0C14 7.732 7.732 14 0 14C7.732 14 14 20.268 14 28C14 20.268 20.268 14 28 14C20.268 14 14 7.732 14 0Z"
+                fill="currentColor" />
+            </svg>
+          </a>
+
+          <!-- ============ LOG IN VIEW ============ -->
+          <div class="auth-view" id="loginView">
+            <h1 class="title">¡Bienvenido de nuevo!</h1>
+            <p class="subtitle">Ingresa tus datos</p>
+
+            <form id="loginForm" novalidate>
+              <div class="field">
+                <label for="login-email">Correo electrónico</label>
+                <input type="email" id="login-email" name="email" autocomplete="email" required />
+              </div>
+
+              <div class="field">
+                <label for="login-password">Contraseña</label>
+                <div class="password-wrap">
+                  <input type="password" id="login-password" name="password" autocomplete="current-password" required />
+                  <button type="button" class="eye-toggle" data-toggle-for="login-password"
+                    aria-label="Mostrar contraseña" aria-pressed="false">
+                    <svg class="icon-eye" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                      <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6" />
+                    </svg>
+                    <svg class="icon-eye-off" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M3 3l18 18M10.6 10.6a3 3 0 0 0 4.24 4.24M9.36 5.6C10.2 5.4 11.08 5.3 12 5.3c7 0 11 6.7 11 6.7a13.4 13.4 0 0 1-3.4 4M6.5 6.9A13.7 13.7 0 0 0 1 12s4 6.7 11 6.7c1.5 0 2.86-.3 4.06-.78"
+                        stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="row-between">
+                <label class="checkbox">
+                  <input type="checkbox" id="remember" checked />
+                  <span class="box"></span>
+                  <span class="checkbox-label">Recordarme por 30 días</span>
+                </label>
+
+                <a href="#" class="link-muted" id="forgotPassword">¿Olvidaste tu contraseña?</a>
+              </div>
+
+              <p class="form-message" id="loginMessage" role="status" aria-live="polite" hidden></p>
+
+
+                <a href="#" class="link-muted">¿Olvidaste tu contraseña?</a>
+              </div>
+
+
+              <button type="submit" class="btn btn-primary" id="loginBtn">
+                <span class="btn-label">Iniciar sesión</span>
+              </button>
+
+              <button type="button" class="btn btn-google" id="googleBtnLogin">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.9c1.7-1.57 2.7-3.88 2.7-6.62Z"
+                    fill="#4285F4" />
+                  <path
+                    d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.9-2.26c-.8.54-1.84.86-3.06.86-2.35 0-4.34-1.59-5.05-3.72H.95v2.33A9 9 0 0 0 9 18Z"
+                    fill="#34A853" />
+                  <path
+                    d="M3.95 10.7A5.4 5.4 0 0 1 3.67 9c0-.59.1-1.17.28-1.7V4.97H.95A9 9 0 0 0 0 9c0 1.45.35 2.83.95 4.03l3-2.33Z"
+                    fill="#FBBC05" />
+                  <path
+                    d="M9 3.58c1.32 0 2.5.46 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .95 4.97l3 2.33C4.66 5.17 6.65 3.58 9 3.58Z"
+                    fill="#EA4335" />
+                </svg>
+                <span>Iniciar sesión con Google</span>
+              </button>
+
+              <button type="button" class="btn btn-guest" id="guestBtn">
+                <span>Iniciar como invitado</span>
+              </button>
+            </form>
+
+            <p class="footer-note">¿No tienes una cuenta? <a href="#" class="link-strong" id="goToSignup">Regístrate</a>
+            </p>
+          </div>
+
+          <!-- ============ SIGN UP VIEW ============ -->
+          <div class="auth-view" id="signupView" hidden>
+            <h1 class="title">Crea tu cuenta</h1>
+            <p class="subtitle">Comencemos</p>
+
+            <form id="signupForm" novalidate>
+              <div class="field">
+                <label for="signup-name">Nombre completo</label>
+                <input type="text" id="signup-name" name="name" autocomplete="name" required />
+<!--
+                <input type="text" id="signup-name" name="name" autocomplete="name" />
+-->
+              </div>
+
+              <div class="field">
+                <label for="signup-email">Correo electrónico</label>
+                <input type="email" id="signup-email" name="email" autocomplete="email" required />
+<!--
+                <input type="email" id="signup-email" name="email" autocomplete="email" />
+-->
+              </div>
+
+              <div class="field">
+                <label for="signup-password">Contraseña</label>
+                <div class="password-wrap">
+                  <input type="password" id="signup-password" name="password" autocomplete="new-password" minlength="6" required />
+<!--
+                  <input type="password" id="signup-password" name="password" autocomplete="new-password" />
+-->
+                  <button type="button" class="eye-toggle" data-toggle-for="signup-password"
+                    aria-label="Mostrar contraseña" aria-pressed="false">
+                    <svg class="icon-eye" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                      <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6" />
+                    </svg>
+                    <svg class="icon-eye-off" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M3 3l18 18M10.6 10.6a3 3 0 0 0 4.24 4.24M9.36 5.6C10.2 5.4 11.08 5.3 12 5.3c7 0 11 6.7 11 6.7a13.4 13.4 0 0 1-3.4 4M6.5 6.9A13.7 13.7 0 0 0 1 12s4 6.7 11 6.7c1.5 0 2.86-.3 4.06-.78"
+                        stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="signup-confirm">Confirmar contraseña</label>
+                <div class="password-wrap">
+                  <input type="password" id="signup-confirm" name="confirm" autocomplete="new-password" minlength="6" required />
+<!--
+                  <input type="password" id="signup-confirm" name="confirm" autocomplete="new-password" />
+-->
+                  <button type="button" class="eye-toggle" data-toggle-for="signup-confirm"
+                    aria-label="Mostrar contraseña" aria-pressed="false">
+                    <svg class="icon-eye" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                      <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6" />
+                    </svg>
+                    <svg class="icon-eye-off" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M3 3l18 18M10.6 10.6a3 3 0 0 0 4.24 4.24M9.36 5.6C10.2 5.4 11.08 5.3 12 5.3c7 0 11 6.7 11 6.7a13.4 13.4 0 0 1-3.4 4M6.5 6.9A13.7 13.7 0 0 0 1 12s4 6.7 11 6.7c1.5 0 2.86-.3 4.06-.78"
+                        stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <p class="field-error" id="signupError" hidden>Las contraseñas no coinciden.</p>
+              <p class="form-message" id="signupMessage" role="status" aria-live="polite" hidden></p>
+<!--
+-->
+
+              <label class="checkbox checkbox--terms">
+                <input type="checkbox" id="agreeTerms" />
+                <span class="box"></span>
+                <span class="checkbox-label">Acepto los Términos y la Política de privacidad</span>
+              </label>
+
+              <button type="submit" class="btn btn-primary" id="signupBtn">
+                <span class="btn-label">Crear cuenta</span>
+              </button>
+
+              <button type="button" class="btn btn-google" id="googleBtnSignup">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.9c1.7-1.57 2.7-3.88 2.7-6.62Z"
+                    fill="#4285F4" />
+                  <path
+                    d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.9-2.26c-.8.54-1.84.86-3.06.86-2.35 0-4.34-1.59-5.05-3.72H.95v2.33A9 9 0 0 0 9 18Z"
+                    fill="#34A853" />
+                  <path
+                    d="M3.95 10.7A5.4 5.4 0 0 1 3.67 9c0-.59.1-1.17.28-1.7V4.97H.95A9 9 0 0 0 0 9c0 1.45.35 2.83.95 4.03l3-2.33Z"
+                    fill="#FBBC05" />
+                  <path
+                    d="M9 3.58c1.32 0 2.5.46 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0A9 9 0 0 0 .95 4.97l3 2.33C4.66 5.17 6.65 3.58 9 3.58Z"
+                    fill="#EA4335" />
+                </svg>
+                <span>Registrarme con Google</span>
+              </button>
+            </form>
+
+            <p class="footer-note">¿Ya tienes una cuenta? <a href="#" class="link-strong" id="goToLogin">Inicia
+                sesión</a></p>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script type="module" src="login.js"></script>
+</body>
+
+</html>

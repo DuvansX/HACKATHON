@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101826">
+    <link rel="icon" href="../../assets/images/Logo.png" type="image/png">
+    <title>IDEA IA</title>
+    <link rel="stylesheet" href="../../styles/style.css">
+</head>
+
+<body class="chat-page">
+    <aside class="chat-sidebar" aria-label="Navegación del chat">
+        <a href="../../../public/index.html" class="chat-brand" aria-label="Volver al inicio de IDEAPRO">
+            <img src="../../assets/images/Logo.png" alt="" class="chat-brand-logo">
+            <span><strong>IDEA</strong><b>PRO</b></span>
+        </a>
+        <button class="sidebar-close-button" id="sidebar-close-btn" type="button" aria-label="Cerrar menú">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m6 6 12 12M18 6 6 18" />
+            </svg>
+        </button>
+        <button class="sidebar-toggle-button" id="sidebar-toggle-btn" type="button" aria-label="Contraer barra lateral"
+            aria-expanded="true">
+            <svg class="sidebar-toggle-icon--expanded" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="16" rx="2.5" />
+                <path d="M9 4v16" />
+            </svg>
+            <svg class="sidebar-toggle-icon--collapsed" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="16" rx="2.5" />
+                <rect x="6" y="7" width="3" height="10" rx="0.8" fill="currentColor" stroke="none" />
+            </svg>
+        </button>
+
+        <button class="new-chat-button" id="new-chat-btn" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z" />
+            </svg>
+            Nuevo chat
+        </button>
+
+        <button class="archived-chats-button" id="archived-chats-btn" type="button" title="Chats archivados">
+            <svg id="archived-chats-button-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 7h16v13H4zM3 4h18v3H3zm6 7h6" />
+            </svg>
+            <span id="archived-chats-button-label">Chats archivados</span>
+        </button>
+
+        <nav class="chat-nav" aria-label="Conversaciones">
+            <section class="chat-nav-section" id="pinned-chats-section" hidden>
+                <p class="chat-nav-label">Anclados</p>
+                <div class="chat-nav-list chat-nav-list--compact" id="pinned-chat-nav-list"></div>
+            </section>
+            <p class="chat-nav-label" id="recent-chats-label">Recientes</p>
+            <div class="chat-nav-list" id="chat-nav-list"></div>
+        </nav>
+
+        <button class="collapsed-chats-button" id="collapsed-chats-btn" type="button"
+            aria-label="Abrir conversaciones recientes" aria-controls="collapsed-chat-popover" aria-expanded="false"
+            title="Conversaciones recientes">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 8.7 3.9 8.38 8.38 0 0 1 12.5 3h.5a8.48 8.48 0 0 1 8 8v.5Z" />
+            </svg>
+        </button>
+
+        <section class="collapsed-chat-popover" id="collapsed-chat-popover" aria-label="Conversaciones recientes"
+            hidden>
+            <p class="collapsed-chat-popover-label">Recientes</p>
+            <div class="collapsed-chat-nav-list" id="collapsed-chat-nav-list"></div>
+        </section>
+
+        <div class="sidebar-footer" aria-label="Perfil del usuario">
+            <div class="sidebar-user-row" aria-label="Perfil del usuario">
+                <div class="sidebar-user-avatar-wrap">
+                    <img id="gmail-user-avatar-bottom" class="sidebar-user-avatar" src="" alt="Avatar del usuario"
+                        hidden>
+                    <span id="gmail-user-avatar-fallback-bottom" class="sidebar-user-avatar-fallback"
+                        aria-hidden="true">Z</span>
+                </div>
+                <div class="sidebar-user-name-wrap">
+                    <span id="gmail-user-name-bottom" class="sidebar-user-name">Google</span>
+                </div>
+                <button class="logout-icon-button" id="logout-btn" type="button" aria-label="Cerrar sesión"
+                    title="Cerrar sesión">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M14 8V5.5A1.5 1.5 0 0 0 12.5 4h-6A1.5 1.5 0 0 0 5 5.5v13A1.5 1.5 0 0 0 6.5 20h6a1.5 1.5 0 0 0 1.5-1.5V16" />
+                        <path d="M11 12h8m-3-3 3 3-3 3" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <main class="chat-shell">
+        <header class="chat-header">
+            <button class="mobile-menu-button" id="menu-btn" type="button" aria-label="Abrir menú"
+                aria-expanded="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 7h16M4 12h16M4 17h16" />
+                </svg>
+            </button>
+            <div class="chat-title" aria-label="Nombre del chat actual">
+                <span class="chat-title-name">IDEAPRO Copilot</span>
+                <span class="chat-title-detail" aria-label="Disponible ahora">
+                    <i aria-hidden="true"></i>
+                    <span>Disponible</span>
+                </span>
+            </div>
+            <a href="../../../public/index.html" class="back-link" aria-label="Volver al inicio" title="Volver al inicio">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10Z" />
+                </svg>
+            </a>
+        </header>
+
+        <section class="chat-interface" aria-label="Conversación con IDEAPRO Copilot">
+            <div class="chat-history" id="chat-history" aria-live="polite" aria-label="Mensajes de la conversación">
+            </div>
+
+            <section class="welcome-screen" id="welcome-screen" aria-labelledby="welcome-title">
+                <div class="welcome-mark" aria-hidden="true">
+                    <img src="../../assets/images/IA%20icono.png" alt="Ícono de IDEAPRO Copilot">
+                </div>
+                <p class="eyebrow">TU ANALISTA DE MERCADO PÚBLICO ;)</p>
+                <h1 id="welcome-title">Hola, bienvenido. ¿Qué analizamos hoy?</h1>
+                <p class="welcome-copy">Cuéntame sobre tu empresa o el proceso que tienes en mente. Analizaré tu punto
+                    de partida y te propondré los siguientes pasos.</p>
+
+                <div class="prompt-suggestions" aria-label="Ideas para empezar">
+                    <p class="prompt-suggestions-label">También puedes empezar con una idea</p>
+                    <div class="prompt-grid">
+                    <button class="prompt-card" type="button"
+                        data-prompt="Quiero analizar qué tan preparada está mi empresa para venderle al Estado.">
+                        <span class="prompt-icon purple" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-8" />
+                            </svg>
+                        </span>
+                        <span class="prompt-label">Analiza mi empresa</span>
+                        <svg class="card-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                    </button>
+                    <button class="prompt-card" type="button"
+                        data-prompt="Ayúdame a encontrar oportunidades de contratación pública para mi empresa.">
+                        <span class="prompt-icon blue" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="11" cy="11" r="6" />
+                                <path d="m20 20-4.2-4.2" />
+                            </svg>
+                        </span>
+                        <span class="prompt-label">Encuentra oportunidades</span>
+                        <svg class="card-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                    </button>
+                    <button class="prompt-card" type="button"
+                        data-prompt="Quiero una ruta clara para participar por primera vez en contratación pública.">
+                        <span class="prompt-icon orange" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5" />
+                            </svg>
+                        </span>
+                        <span class="prompt-label">Prepara mi primer proceso</span>
+                        <svg class="card-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                    </button>
+                    <button class="prompt-card" type="button"
+                        data-prompt="Ayúdame a estructurar una propuesta para una oportunidad pública.">
+                        <span class="prompt-icon green" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z" />
+                            </svg>
+                        </span>
+                        <span class="prompt-label">Estructura una propuesta</span>
+                        <svg class="card-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                    </button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="chat-input-wrapper">
+                <form class="input-container" id="chat-form">
+                    <label class="sr-only" for="user-input">Escribe tu mensaje</label>
+                    <textarea id="user-input" placeholder="Pregunta lo que necesites…" rows="1" autofocus></textarea>
+                    <button id="microphone-btn" class="microphone-button" type="button"
+                        aria-label="Dictar mensaje por voz" aria-pressed="false" title="Dictar mensaje por voz">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M12 3a3.25 3.25 0 0 0-3.25 3.25v4.5a3.25 3.25 0 0 0 6.5 0v-4.5A3.25 3.25 0 0 0 12 3Z" />
+                            <path d="M5.5 10.5a6.5 6.5 0 0 0 13 0M12 17v4M8.5 21h7" />
+                        </svg>
+                    </button>
+                    <button id="send-btn" class="send-button" type="submit" aria-label="Enviar mensaje" disabled >
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="m5 12 14-7-4 14-3-5-5-2Z" />
+                            <path d="m12 12 3-3" />
+                        </svg>
+                    </button>
+                </form>
+                <p class="input-hint"><span id="input-hint-text">IDEAPRO Copilot puede cometer errores. Verifica la
+                        información importante.</span><kbd>↵</kbd> para enviar</p>
+            </div>
+        </section>
+    </main>
+
+    <div class="chat-modal-backdrop" id="chat-modal-backdrop" hidden>
+        <section class="chat-modal" role="dialog" aria-modal="true" aria-labelledby="chat-modal-title"
+            aria-describedby="chat-modal-description">
+            <form id="chat-modal-form">
+                <h2 id="chat-modal-title"></h2>
+                <p id="chat-modal-description"></p>
+                <div class="chat-modal-field" id="chat-modal-name-field">
+                    <label for="chat-modal-name-input">Nombre del chat</label>
+                    <input id="chat-modal-name-input" type="text" maxlength="25" autocomplete="off">
+                </div>
+                <div class="chat-modal-actions">
+                    <button class="chat-modal-cancel" id="chat-modal-cancel" type="button">Cancelar</button>
+                    <button class="chat-modal-submit" id="chat-modal-submit" type="submit">Guardar</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <script type="module" src="chat.js"></script>
+</body>
+
+</html>

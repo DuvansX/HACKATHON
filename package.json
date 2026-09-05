@@ -1,0 +1,9 @@
+{
+  "name": "ideapro",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "firebase emulators:start --only hosting,firestore --config src/config/firebase.json",
+    "deploy": "firebase deploy --config src/config/firebase.json"
+  }
+}

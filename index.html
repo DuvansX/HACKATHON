@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../src/assets/images/Logo.png" type="image/png">
+    <title>IDEAPRO Copilot</title>
+    <link rel="stylesheet" href="../src/styles/style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo logo-typing" aria-label="IDEAPRO">
+            <img src="../src/assets/images/Logo.png" alt="" class="logo-image">
+
+            <div class="logo-copy" aria-hidden="true">
+                <span>IDEA</span>
+                <strong data-logo-word>PRO</strong>
+                <span class="logo-cursor"></span>
+            </div>
+        </div>
+
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#como-funciona">Cómo funciona</a>
+            <a href="#beneficios">Beneficios</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="nav-button" type="button" data-start-diagnosis onclick="startDiagnosis()">
+                Comenzar diagnóstico
+            </button>
+        </div>
+    </header>
+
+
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-content">
+
+                <div class="badge">
+                    ✦ Inteligencia artificial para empresas
+                </div>
+
+                <h1>
+                    <span class="title-main">Lleva tu empresa</span>
+                    <span>al mercado público.</span>
+                </h1>
+
+                <p>
+                    IDEAPRO Copilot analiza las necesidades y el nivel
+                    de madurez de tu empresa y crea una ruta personalizada
+                    para ayudarte a crecer.
+                </p>
+
+                <div class="hero-buttons">
+                    <button class="primary-button" type="button" data-start-diagnosis onclick="startDiagnosis()">
+                        Comenzar diagnóstico
+                    </button>
+
+                    <button class="secondary-button" type="button" onclick="scrollToSection()">
+                        Conocer más
+                    </button>
+                </div>
+
+                <div class="trust">
+                    <div>
+                        <strong>01 ·</strong>
+                        Diagnóstico
+                    </div>
+
+                    <div>
+                        <strong>02 ·</strong>
+                        Recomendaciones
+                    </div>
+
+                    <div>
+                        <strong>03 ·</strong>
+                        Acompañamiento
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="hero-card">
+
+                <div class="card-header">
+                    <div>
+                        <span class="status"></span>
+                        IDEAPRO Copilot
+                    </div>
+
+                    <div class="mac-dots">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
+                    </div>
+                </div>
+
+                <div class="chat">
+
+                    <div class="message bot">
+                        Hola 👋 Soy IDEAPRO Copilot.
+                        Voy a conocer tu empresa para ayudarte
+                        a encontrar las mejores oportunidades.
+                    </div>
+
+                    <div class="message user">
+                        Tengo una empresa de tecnología,
+                        pero nunca hemos trabajado con el Estado.
+                    </div>
+
+                    <div class="message bot">
+                        Entiendo. Puedo ayudarte a determinar
+                        qué tan preparada está tu empresa y
+                        qué pasos deberías seguir.
+                    </div>
+
+                    <div class="typing">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="features" id="como-funciona">
+
+            <div class="section-title">
+                <span>¿Cómo funciona?</span>
+                <h2>De la necesidad a la oportunidad.</h2>
+                <p>
+                    Un agente inteligente que entiende tu empresa
+                    y te guía en cada paso.
+                </p>
+            </div>
+
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <div class="icon">01</div>
+                    <h3>Diagnóstico inteligente</h3>
+                    <p>
+                        Analizamos el tamaño, experiencia,
+                        capacidades y necesidades de tu empresa.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">02</div>
+                    <h3>Ruta personalizada</h3>
+                    <p>
+                        Obtén recomendaciones adaptadas
+                        específicamente a tu situación.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">03</div>
+                    <h3>Acompañamiento</h3>
+                    <p>
+                        Conecta con contenidos, herramientas,
+                        mentorías y servicios especializados.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="cta" id="beneficios">
+
+            <div>
+                <span>¿Listo para comenzar?</span>
+
+                <h2>
+                    Descubre el siguiente paso
+                    para tu empresa.
+                </h2>
+            </div>
+
+            <button class="primary-button" type="button" data-start-diagnosis onclick="startDiagnosis()">
+                Iniciar diagnóstico →
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="footer-brand">
+            <div class="footer-logo" aria-label="IDEAPRO">
+                <span>IDEA</span><strong>PRO</strong>
+            </div>
+            <p>Inteligencia que conecta empresas con oportunidades.</p>
+        </div>
+
+        <address class="footer-contact">
+            <a href="https://wa.me/57301563984" class="footer-contact-item" target="_blank" rel="noopener noreferrer" aria-label="Escribir a IDEAPRO por WhatsApp">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .8 2.9a2 2 0 0 1-.5 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.4 1.9.7 2.9.8a2 2 0 0 1 1.6 1.9Z" /></svg>
+                <span><small>WhatsApp</small>301563984</span>
+            </a>
+            <a href="mailto:ideapro.consultores@gmail.com" class="footer-contact-item" aria-label="Enviar correo a IDEAPRO">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></svg>
+                <span><small>Correo electrónico</small>ideapro.consultores@gmail.com</span>
+            </a>
+            <a href="https://www.linkedin.com/in/ideapro-consultores-582440212" class="footer-contact-item" aria-label="LinkedIn de IDEAPRO Consultores">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M8 10v6M8 7.5v.1M12 16v-3.3a2.2 2.2 0 0 1 4.4 0V16M12 10v6" /></svg>
+                <span><small>LinkedIn</small>IDEAPRO Consultores</span>
+            </a>
+        </address>
+
+        <div class="footer-social-wrap">
+            <p>Síguenos</p>
+            <div class="footer-social" aria-label="Redes sociales">
+                <a href="#" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v3H6v4h3v6h4v-6h3l1-4h-4V9c0-.7.3-1 1-1Z" /></svg></a>
+                <a href="#" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" class="svg-fill" /></svg></a>
+                <a href="#" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.2a3.7 3.7 0 1 1-3-3.6" /><path d="M14 3c.5 3.2 2.3 5 5 5.4" /></svg></a>
+                <a href="https://wa.me/57301563984" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.8a8 8 0 0 1-11.8 7L4 20l1.2-4.1A8 8 0 1 1 20 11.8Z" /><path d="M9 8.3c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .5.4l.8 1.8c.1.2.1.4 0 .6l-.5.6c-.1.2-.2.3 0 .6.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6 0l.7-.7c.2-.2.4-.2.6-.1l1.8.8c.3.1.4.3.4.5v.5c0 .3-.2.5-.5.7-.6.3-1.8.4-3.9-.5-1.4-.6-3.2-2.2-4-3.7-.8-1.6-.9-2.8-.6-3.5Z" /></svg></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">© 2026 IDEAPRO · Todos los derechos reservados.</div>
+    </footer>
+
+
+    <script type="module" src="../src/main.js"></script>
+
+</body>
+
+</html>
