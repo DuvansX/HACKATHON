@@ -1,7 +1,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const SUPABASE_URL = "https://nsicxoiopomlnejmyten.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5zaWN4b2lvcG9tbG5lam15dGVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3ODY0NzksImV4cCI6MjEwMzM2MjQ3OX0.3pPwm5Ewy4NrvV75NKqpqv8PvLFGtV6YVBwau-W4cOs";
+const SUPABASE_ANON_KEY = "eyJhbGci••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••";
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -21,7 +21,6 @@ function normalizarUsuario(user) {
 }
 
 let usuarioActual = null;
-
 
 export const auth = {
   get currentUser() {
@@ -105,21 +104,29 @@ export async function registrarConCorreo(nombre, correo, contrasena) {
 }
 
 export async function enviarCorreoRestablecimiento(correo) {
+  // window.location.origin no sirve aquí: en un sitio publicado bajo una
+  // subruta (p. ej. GitHub Pages, https://usuario.github.io/repo/) el
+  // origin no incluye "/repo", así que la URL quedaría rota. Se resuelve en
+  // cambio contra la página actual, que si funciona sin importar la subruta.
   const { error } = await supabase.auth.resetPasswordForEmail(correo.trim(), {
-    redirectTo: `${window.location.origin}/src/components/auth/login.html`
+    redirectTo: window.location.href.split(/[?#]/)[0]
   });
   if (error) throw error;
 }
 
 export async function iniciarConGoogle() {
+  // Mismo motivo que arriba: se calcula relativo a esta página (login.html)
+  // en vez de con window.location.origin, para que funcione tanto en la raíz
+  // de un dominio como en una subruta de GitHub Pages.
+  const destino = new URL("../chat/chat.html", window.location.href).toString();
+
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: `${window.location.origin}/src/components/chat/chat.html`
+      redirectTo: destino
     }
   });
   if (error) throw error;
-
 }
 
 export async function iniciarComoInvitado() {
