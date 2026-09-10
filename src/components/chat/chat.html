@@ -11,23 +11,10 @@
 </head>
 
 <body class="chat-page">
-    
-    <script>
-        const isDarkTheme = localStorage.getItem("theme") === "dark";
-        document.body.classList.toggle("light-mode", !isDarkTheme);
-        document.querySelector('meta[name="theme-color"]').setAttribute("content", isDarkTheme ? "#080d17" : "#ffffff");
-    </script>
-    
-    <div class="page-loader is-visible" id="page-loader" role="status" aria-live="polite" aria-label="Cargando agente">
-        <div class="page-loader-content">
-            <div class="page-loader-grid" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-            <p class="page-loader-label">Cargando agente</p>
-        </div>
-    </div>
     <aside class="chat-sidebar" aria-label="Navegación del chat">
         <a href="../../../index.html" class="chat-brand" aria-label="Volver al inicio de IDEAPRO">
             <img src="../../assets/images/Logo.png" alt="" class="chat-brand-logo">
-            <span><strong>IDEA</strong><b data-logo-word>PRO</b><i class="chat-logo-cursor" aria-hidden="true"></i></span>
+            <span><strong>IDEA</strong><b>PRO</b></span>
         </a>
         <button class="sidebar-close-button" id="sidebar-close-btn" type="button" aria-label="Cerrar menú">
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -121,10 +108,6 @@
                     <span>Disponible</span>
                 </span>
             </div>
-            <button class="theme-toggle compact-theme-toggle chat-theme-toggle" id="themeToggle" type="button" aria-label="Tema claro; cambiar tema" title="Tema: claro">
-                <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z" /></svg>
-                <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5" /><path d="M12 2.5v2M12 19.5v2M21.5 12h-2M4.5 12h-2M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4M18.7 18.7l-1.4-1.4M6.7 6.7 5.3 5.3" /></svg>
-            </button>
             <a href="../../../index.html" class="back-link" aria-label="Volver al inicio" title="Volver al inicio">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10Z" />
