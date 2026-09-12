@@ -1112,7 +1112,7 @@ async function sendMessage(message = inputField.value.trim()) {
 
         const nombreUsuario = obtenerNombreVerificadoGoogle();
 
-        const response = await fetch("https://kudos-unskilled-surplus.ngrok-free.dev/webhook/ideapro-chat-v2", {
+        const response = await fetch("https://facecloth-carton-chafe.ngrok-free.dev/webhook/ideapro-chat-v2", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
