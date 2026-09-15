@@ -124,7 +124,11 @@ export async function iniciarConGoogle() {
     provider: "google",
     options: {
       redirectTo: destino,
-      scopes: "https://www.googleapis.com/auth/calendar.events"
+      scopes: "https://www.googleapis.com/auth/calendar.events",
+      queryParams: {
+        access_type: "offline",
+        prompt: "consent"
+      }
     }
   });
 
