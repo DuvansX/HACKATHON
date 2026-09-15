@@ -123,9 +123,11 @@ export async function iniciarConGoogle() {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: destino
+      redirectTo: destino,
+      scopes: "https://www.googleapis.com/auth/calendar.events"
     }
   });
+
   if (error) throw error;
 }
 
