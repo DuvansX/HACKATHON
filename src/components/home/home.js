@@ -176,10 +176,21 @@ document.addEventListener("click", (event) => {
     vincularConGmail();
 });
 
-onAuthStateChanged((user) => {
+onAuthStateChanged(async (user) => {
+
     setDiagnosisButtonsState();
+
     updateStartButtonCopy(user);
+
     updateGmailButtonState(user);
+
+    const session = await obtenerSesion();
+
+    console.log("Sesión actual:", session);
+    console.log("Usuario:", session?.user?.email);
+    console.log("Tiene provider_token:", !!session?.provider_token);
+    console.log("Tiene provider_refresh_token:", !!session?.provider_refresh_token);
+
 });
 
 window.addEventListener("ideapro-auth-state", (event) => {
