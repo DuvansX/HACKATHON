@@ -176,6 +176,7 @@ document.addEventListener("click", (event) => {
     vincularConGmail();
 });
 
+console.log("🔥 HOME.JS SE ESTÁ EJECUTANDO");
 onAuthStateChanged(async (user) => {
 
     setDiagnosisButtonsState();
