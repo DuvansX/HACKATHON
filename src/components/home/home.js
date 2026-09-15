@@ -1,4 +1,4 @@
-import { auth, iniciarConGoogle, onAuthStateChanged, obtenerUrlDeApp } from "../../config/supabase.js";
+import { auth, iniciarConGoogle, obtenerSesion, onAuthStateChanged, obtenerUrlDeApp } from "../../config/supabase.js";
 
 function setDiagnosisButtonsState() {
     const buttons = document.querySelectorAll("[data-start-diagnosis]");
