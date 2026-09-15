@@ -135,6 +135,14 @@ export async function iniciarConGoogle() {
   if (error) throw error;
 }
 
+export async function obtenerSesion() {
+  const { data, error } = await supabase.auth.getSession();
+
+  if (error) throw error;
+
+  return data.session;
+}
+
 export async function iniciarComoInvitado() {
   const { data, error } = await supabase.auth.signInAnonymously();
   if (error) throw error;
