@@ -177,6 +177,8 @@ document.addEventListener("click", (event) => {
 });
 
 console.log("🔥 HOME.JS SE ESTÁ EJECUTANDO");
+
+console.log("🔥 LLEGÓ ANTES DE onAuthStateChanged");
 onAuthStateChanged(async (user) => {
 
     setDiagnosisButtonsState();
