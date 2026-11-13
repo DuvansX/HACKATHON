@@ -5,8 +5,7 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// Construye URLs desde la carpeta `src`, sin perder el prefijo del repositorio
-// cuando la aplicación se publica con GitHub Pages.
+
 export function obtenerUrlDeApp(ruta) {
   return new URL(ruta, new URL("../", import.meta.url)).toString();
 }
