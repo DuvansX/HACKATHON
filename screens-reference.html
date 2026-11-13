@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IDEAPRO - Referencia de pantallas</title>
+  <style>
+    :root {
+      --bg: #090d19;
+      --panel: rgba(15, 20, 34, 0.9);
+      --panel-strong: rgba(11, 16, 29, 0.96);
+      --line: rgba(255,255,255,0.08);
+      --text: #edf4ff;
+      --muted: #9aa7bf;
+      --purple: #8c7dff;
+      --blue: #52a7ff;
+      --green: #55d29c;
+      --card-shadow: 0 24px 64px rgba(6, 10, 20, 0.46);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; font-family: Inter, Arial, sans-serif; background: radial-gradient(circle at top, #121a2d 0%, var(--bg) 35%); color: var(--text); }
+    body { padding: 48px 24px 80px; }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #7e5cff, #5c7cfa);
+      box-shadow: 0 10px 24px rgba(106, 118, 255, 0.35);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(160, 174, 255, 0.22);
+      background: rgba(160, 174, 255, 0.08);
+      color: #d8e3ff;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .title {
+      margin: 10px 0 12px;
+      font-size: clamp(28px, 5vw, 52px);
+      line-height: 1.06;
+      letter-spacing: -0.05em;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 0 0 34px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(260px, 0.7fr);
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .window {
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+    }
+
+    .window--large { min-height: 490px; }
+    .window--small { min-height: 232px; }
+    .window--accent {
+      background: linear-gradient(135deg, rgba(96, 90, 255, 0.18), rgba(22, 27, 48, 0.96));
+    }
+
+    .window-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      height: 54px;
+      padding: 0 18px 0 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      color: #dfe7ff;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .window-dots { display: flex; align-items: center; gap: 8px; }
+    .window-dot {
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .window-dot.red { background: #ff5f57; }
+    .window-dot.yellow { background: #febc2e; }
+    .window-dot.green { background: #28c840; }
+
+    .window-body {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      min-height: 436px;
+    }
+
+    .window-sidebar {
+      background: rgba(17, 24, 39, 0.94);
+      border-right: 1px solid rgba(255,255,255,0.05);
+      padding: 20px 14px;
+    }
+
+    .sidebar-title {
+      color: #aebbe3;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .window-sidebar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .window-sidebar li {
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: #9aa7bf;
+      font-size: 14px;
+    }
+
+    .window-sidebar li.is-active {
+      background: rgba(92, 124, 250, 0.18);
+      color: #eff4ff;
+      border: 1px solid rgba(135, 156, 255, 0.2);
+    }
+
+    .window-main { padding: 22px 20px 18px; }
+
+    .window-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .window-header small {
+      display: block;
+      color: #8e9bb5;
+      margin-bottom: 4px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .window-header strong {
+      display: block;
+      font-size: 18px;
+    }
+
+    .window-pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(100, 199, 120, 0.12);
+      color: #98f1b3;
+      font-size: 11px;
+      border: 1px solid rgba(100, 199, 120, 0.2);
+    }
+
+    .window-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(180px, 0.8fr);
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .hero-panel,
+    .focus-card,
+    .mini-panel {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(177,189,255,0.08);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .hero-panel p {
+      color: #9aa7bf;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .hero-panel strong {
+      display: block;
+      font-size: clamp(28px, 4vw, 36px);
+      margin-bottom: 12px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+
+    .progress-track span {
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #6d7eff, #7cf4c8);
+    }
+
+    .focus-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .focus-card span,
+    .mini-panel span {
+      color: #9aa7bf;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .focus-card strong { font-size: 18px; }
+    .focus-card small,
+    .mini-panel small { color: #b4bfd7; font-size: 12px; line-height: 1.5; }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mini-panel {
+      display: grid;
+      gap: 10px;
+    }
+
+    .mini-panel strong { font-size: clamp(22px, 3vw, 30px); }
+
+    .stack {
+      display: grid;
+      gap: 26px;
+    }
+
+    .mini-screen {
+      display: grid;
+      gap: 14px;
+      padding: 18px 16px 20px;
+    }
+
+    .task-row {
+      display: grid;
+      grid-template-columns: 12px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .task-bullet {
+      display: block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .task-bullet.purple { background: var(--purple); }
+    .task-bullet.blue { background: var(--blue); }
+    .task-bullet.green { background: var(--green); }
+
+    .task-row strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .task-row small { color: #a9b5d1; font-size: 11px; }
+
+    .chart-block {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: end;
+      padding: 18px 16px 20px;
+      height: 100%;
+    }
+
+    .bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      height: 120px;
+      padding-top: 10px;
+    }
+
+    .bars span {
+      display: block;
+      width: 100%;
+      max-width: 28px;
+      height: var(--h);
+      border-radius: 999px 999px 10px 10px;
+      background: linear-gradient(180deg, #9caeff, #5c7cfa 70%, #4ec1b8);
+      box-shadow: 0 8px 18px rgba(92, 124, 250, 0.26);
+    }
+
+    .chart-copy {
+      display: grid;
+      align-content: end;
+      gap: 6px;
+      justify-items: end;
+      text-align: right;
+    }
+
+    .chart-copy strong { font-size: 30px; line-height: 1; }
+    .chart-copy span { color: #b1bfdc; font-size: 12px; }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .window-body { grid-template-columns: 1fr; }
+      .window-sidebar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <div class="brand">
+        <span class="brand-mark"></span>
+        <span>IDEAPRO</span>
+      </div>
+      <span class="tag">Referencia visual</span>
+    </div>
+
+    <h1 class="title">Pantallas de referencia de la plataforma</h1>
+    <p class="subtitle">Documento aparte para revisar la dirección visual del producto sin integrar estas vistas en la landing principal.</p>
+
+    <div class="grid">
+      <div class="window window--large">
+        <div class="window-bar">
+          <div class="window-dots" aria-hidden="true">
+            <span class="window-dot red"></span>
+            <span class="window-dot yellow"></span>
+            <span class="window-dot green"></span>
+          </div>
+          <span>IDEAPRO Copilot</span>
+        </div>
+
+        <div class="window-body">
+          <aside class="window-sidebar">
+            <div class="sidebar-title">Diagnóstico</div>
+            <ul>
+              <li class="is-active">Resumen</li>
+              <li>Riesgos</li>
+              <li>Oportunidades</li>
+              <li>Acciones</li>
+            </ul>
+          </aside>
+
+          <div class="window-main">
+            <header class="window-header">
+              <div>
+                <small>Empresa</small>
+                <strong>Soluciones Tech SAS</strong>
+              </div>
+              <button type="button" class="window-pill">Madurez media</button>
+            </header>
+
+            <div class="window-hero">
+              <div class="hero-panel">
+                <p>Preparación para el Estado</p>
+                <strong>72%</strong>
+                <div class="progress-track" aria-hidden="true"><span></span></div>
+              </div>
+              <div class="focus-card">
+                <span>Prioridad</span>
+                <strong>Certificaciones</strong>
+                <small>Falta fortalecer la evidencia documental.</small>
+              </div>
+            </div>
+
+            <div class="mini-grid">
+              <article class="mini-panel">
+                <span>Oportunidades</span>
+                <strong>18</strong>
+                <small>Sector salud y educación</small>
+              </article>
+              <article class="mini-panel">
+                <span>Acciones</span>
+                <strong>6</strong>
+                <small>Próximo trimestre</small>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack">
+        <div class="window window--small">
+          <div class="window-bar">
+            <div class="window-dots" aria-hidden="true">
+              <span class="window-dot red"></span>
+              <span class="window-dot yellow"></span>
+              <span class="window-dot green"></span>
+            </div>
+            <span>Agenda</span>
+          </div>
+
+          <div class="mini-screen">
+            <div class="task-row">
+              <span class="task-bullet purple"></span>
+              <div>
+                <strong>Revisión documental</strong>
+                <small>Hoy</small>
+              </div>
+            </div>
+            <div class="task-row">
+              <span class="task-bullet blue"></span>
+              <div>
+                <strong>Oportunidades</strong>
+                <small>3 pendientes</small>
+              </div>
+            </div>
+            <div class="task-row">
+              <span class="task-bullet green"></span>
+              <div>
+                <strong>Plan de acción</strong>
+                <small>Próximo paso</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="window window--small window--accent">
+          <div class="window-bar">
+            <div class="window-dots" aria-hidden="true">
+              <span class="window-dot red"></span>
+              <span class="window-dot yellow"></span>
+              <span class="window-dot green"></span>
+            </div>
+            <span>Resultado</span>
+          </div>
+
+          <div class="chart-block">
+            <div class="bars" aria-hidden="true">
+              <span style="--h: 36%"></span>
+              <span style="--h: 52%"></span>
+              <span style="--h: 68%"></span>
+              <span style="--h: 84%"></span>
+              <span style="--h: 96%"></span>
+            </div>
+            <div class="chart-copy">
+              <strong>+41%</strong>
+              <span>mejora en preparación</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
