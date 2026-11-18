@@ -48,11 +48,11 @@ La pantalla de acceso permite:
 ## Capturas del proyecto
 
 ### Inicio
-![Página de inicio]![Uploading Captura de pantalla 2026-11-18 114109.png…]()
-
+![Página de inicio](img/inicio.png)
 
 ### Inicio de sesión
-![Inicio de sesión]
+![Inicio de sesión](img/login.png)
+
 
 ## Tecnologías utilizadas
 
