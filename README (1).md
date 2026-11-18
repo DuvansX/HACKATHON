@@ -52,7 +52,9 @@ La pantalla de acceso permite:
 ![Página de inicio](Captura de pantalla 2026-11-18 114120.png)
 
 ### Inicio de sesión
-![Inicio de sesión](img/login.png)
+
+<img width="1430" height="775" alt="Captura de pantalla 2026-11-18 114109" src="https://github.com/user-attachments/assets/d21f9f4f-a1cf-4f34-9a24-0c04555f8eaa" />
+
 
 ## Tecnologías utilizadas
 
