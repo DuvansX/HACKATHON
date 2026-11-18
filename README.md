@@ -135,6 +135,7 @@ Revisa que `style.css` esté en la misma carpeta que `index.html`.
 - Julian Daza 
 - John Castro 
 - Santiago Reyes
+- Ronald Sebastian Montañez
 
 ## Estado del proyecto
 
