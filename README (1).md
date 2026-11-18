@@ -49,12 +49,13 @@ La pantalla de acceso permite:
 ## Capturas del proyecto
 
 ### Inicio
-![Página de inicio](Captura de pantalla 2026-11-18 114120.png)
+<img width="1430" height="775" alt="Captura de pantalla 2026-11-18 114109" src="https://github.com/user-attachments/assets/6fde9cbb-87ec-48b7-9a93-a121c0be839a" />
 
 ### Inicio de sesión
+<img width="1439" height="769" alt="Captura de pantalla 2026-11-18 114120" src="https://github.com/user-attachments/assets/284a42d7-1e57-4866-9ad9-3179a844c528" />
 
-<img width="1430" height="775" alt="Captura de pantalla 2026-11-18 114109" src="https://github.com/user-attachments/assets/d21f9f4f-a1cf-4f34-9a24-0c04555f8eaa" />
-
+### Interfaz de agente
+<img width="894" height="453" alt="image" src="https://github.com/user-attachments/assets/321beaf1-5c63-4501-ad04-292bf1b38368" />
 
 ## Tecnologías utilizadas
 
@@ -127,11 +128,13 @@ Revisa que `style.css` esté en la misma carpeta que `index.html`.
 
 ## Equipo
 
-- [DuvansX](https://github.com/DuvansX)
+- Duvan Sanchez
 - Juan David Avila
 - Oriana Lozano
 - Juan Mahecha
-- Jualian Daza 
+- Julian Daza 
+- John Castro 
+- Santiago Reyes
 
 ## Estado del proyecto
 
