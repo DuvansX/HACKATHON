@@ -45,6 +45,7 @@ La pantalla de acceso permite:
 - Iniciar como invitado.
 - Registrarse como nuevo usuario.
 
+
 ## Capturas del proyecto
 
 ### Inicio
@@ -52,7 +53,6 @@ La pantalla de acceso permite:
 
 ### Inicio de sesión
 ![Inicio de sesión](img/login.png)
-
 
 ## Tecnologías utilizadas
 
@@ -122,14 +122,14 @@ Verifica que los archivos estén en `img/` y que los nombres coincidan exactamen
 **La página se ve sin estilos**
 Revisa que `style.css` esté en la misma carpeta que `index.html`.
 
-## Demo en línea
-
-Próximamente: [agregar enlace de GitHub Pages].
 
 ## Equipo
 
 - [DuvansX](https://github.com/DuvansX)
-- [Agregar nombres de los demás integrantes]
+- Juan David Avila
+- Oriana Lozano
+- Juan Mahecha
+- Jualian Daza 
 
 ## Estado del proyecto
 
