@@ -1,107 +1,135 @@
-# IDEAPRO Copilot — Agente Inteligente para Ecosistema Público
+# IDEASANTOTO – IDEAPRO Copilot
 
-> **HackTech 5.0 (2026)** | **Reto 2:** Diseño de un agente inteligente para empresarios que facilite la entrada al ecosistema público y servicios de IDEAPRO.  
-> **Empresa Proponente:** IDEAPRO S.A.S.
+> Inteligencia artificial para llevar tu empresa al mercado público.
 
+## Descripción general
 
----
+**IDEASANTOTO** es una aplicación web desarrollada como solución para un hackathon. Su asistente de inteligencia artificial, **IDEAPRO Copilot**, analiza las necesidades y el nivel de madurez de una empresa y crea una ruta personalizada para ayudarla a participar en el mercado público (contratación con el Estado).
 
-##  Contexto y Descripción del Reto
+La plataforma cuenta con una página de presentación, un chat demostrativo del Copilot y un sistema de acceso para usuarios (correo, Google o invitado), con una interfaz moderna que incluye modo claro y modo oscuro.
 
-Las micro, pequeñas y medianas empresas interesadas en contratar con el Estado frecuentemente enfrentan una barrera de entrada: desconocen los requisitos normativos, su propio nivel de preparación y cuál es la oferta de servicios adecuada para su etapa de madurez. Por su parte, para **IDEAPRO S.A.S.** resulta complejo escalar diagnósticos personalizados sin depender de la intervención constante de un consultor humano.
+## Objetivo del proyecto
 
-**IDEAPRO Copilot** nace como la puerta de entrada inteligente y escalable al ecosistema de servicios de IDEAPRO: un agente conversacional interactivo capaz de diagnosticar, perfilar y trazar rutas de acompañamiento a la medida de cada empresario.
+El objetivo principal es facilitar que empresas que nunca han trabajado con el Estado (por ejemplo, empresas de tecnología) entiendan qué tan preparadas están y qué pasos deben seguir para acceder a oportunidades del sector público.
 
----
+La plataforma busca ofrecer un acompañamiento sencillo, visual y guiado, desde el diagnóstico inicial hasta el seguimiento del proceso.
 
-##  Funcionalidades Principales
+## Funcionalidades principales
 
-* **Onboarding Conversacional:** Recolección dinámica de datos clave sobre la empresa, capacidades, experiencia comercial y metas de contratación.
-* **Diagnóstico de Madurez y Perfilamiento:** Clasificación automática del nivel de preparación de la organización frente a los procesos de compra pública.
-* **Ruta de Crecimiento Personalizada:** Guía paso a paso adaptada al estadio de la empresa para cerrar brechas técnicas y administrativas.
-* **Recomendación Inteligente de Portafolio:** Sugerencia contextualizada de consultorías, capacitaciones, herramientas y mentorías de IDEAPRO sin recurrir a ventas genéricas.
-* **Persistencia y Seguimiento:** Historial de conversaciones sincronizado en la nube para mantener el contexto del usuario en futuras sesiones.
-* **Accesibilidad e Inclusión:** Panel nativo de ajustes de accesibilidad (alto contraste, tipografía legible, escala tipográfica, lector de pantalla).
+### Página de inicio
+La página principal presenta la propuesta de valor del proyecto e incluye:
 
----
+- Mensaje principal: "Lleva tu empresa al mercado público".
+- Botones de acción: **Comenzar diagnóstico** y **Conocer más**.
+- Demo del chat de **IDEAPRO Copilot**.
+- Resumen del proceso en tres pasos: Diagnóstico, Recomendaciones y Acompañamiento.
+- Menú de navegación: Quiénes somos, Territorios, Cómo funciona y Beneficios.
+- Botón de modo claro / oscuro.
 
-##  Arquitectura Técnica
+### Cómo funciona
 
-El proyecto está estructurado como una solución web Vanilla, lista para desplegarse ágilmente y escalar dentro del ecosistema digital de IDEAPRO:
+| Paso | Descripción |
+|------|-------------|
+| 01. Diagnóstico | El Copilot conoce la empresa y evalúa su nivel de preparación. |
+| 02. Recomendaciones | Se genera una ruta personalizada con los pasos a seguir. |
+| 03. Acompañamiento | La empresa recibe guía durante el proceso. |
 
-* **Frontend:** HTML5 semántico, CSS3 modular (diseño responsive, soporte dark/light mode y accesibilidad WCAG) y Vanilla JavaScript (ES Modules).
-* **Autenticación y Persistencia:** Integración de base de datos (como Supabase o Firebase) para el almacenamiento reactivo de perfiles, sesiones y chats.
-* **Motor de IA y Orquestación:** Flujo automatizado en **n8n** expuesto vía Webhook, integrando modelos de Inteligencia Artificial (Anthropic / Ollama) para el análisis de lenguaje natural y generación de diagnósticos en tiempo real.
+### Inicio de sesión y registro
+La pantalla de acceso permite:
 
----
+- Iniciar sesión con correo electrónico y contraseña.
+- Mostrar u ocultar la contraseña.
+- Recordar la sesión por 30 días.
+- Recuperar la contraseña.
+- Iniciar sesión con Google.
+- Iniciar como invitado.
+- Registrarse como nuevo usuario.
 
-## Stack Tecnologico 
+## Capturas del proyecto
 
-<div align="center">
-  <table>
-    <!-- Fila 1: Frontend -->
-    <tr>
-      <td align="center" width="160">
-        <img src="https://skillicons.dev/icons?i=html" height="48" alt="HTML5"/><br/>
-        <strong>HTML5</strong>
-      </td>
-      <td align="center" width="160">
-        <img src="https://skillicons.dev/icons?i=css" height="48" alt="CSS3"/><br/>
-        <strong>CSS3</strong>
-      </td>
-      <td align="center" width="160">
-        <img src="https://skillicons.dev/icons?i=javascript" height="48" alt="JavaScript"/><br/>
-        <strong>JavaScript</strong>
-      </td>
-    </tr>
-    <!-- Fila 2: Backend, DB y Automatización -->
-    <tr>
-      <td align="center" width="160">
-        <img src="https://skillicons.dev/icons?i=supabase" height="48" alt="Supabase"/><br/>
-        <strong>Supabase</strong>
-      </td>
-      <td align="center" width="160">
-        <img src="https://cdn.simpleicons.org/n8n/EA4B71" height="48" width="48" alt="n8n"/><br/>
-        <strong>n8n</strong>
-      </td>
-      <td align="center" width="160">
-        <img src="https://skillicons.dev/icons?i=github" height="48" alt="GitHub"/><br/>
-        <strong>GitHub</strong>
-      </td>
-    </tr>
-    <!-- Fila 3: Modelos IA & Entorno IDE -->
-    <tr>
-      <td align="center" width="160">
-        <img src="https://cdn.simpleicons.org/ollama/a3a3a3" height="48" width="48" alt="Ollama"/><br/>
-        <strong>Ollama</strong>
-      </td>
-      <td align="center" width="160">
-        <img src="https://cdn.simpleicons.org/anthropic/D97757" height="48" width="48" alt="Anthropic"/><br/>
-        <strong>Anthropic</strong>
-      </td>
-      <td align="center" width="160">
-        <img src="https://skillicons.dev/icons?i=gcp" height="48" alt="Google"/><br/>
-        <strong>Google</strong>
-      </td>
-    </tr>
-  </table>
-</div>
+### Inicio
+![Página de inicio](img/inicio.png)
 
----
+### Inicio de sesión
+![Inicio de sesión](img/login.png)
 
-## 📁 Estructura del Repositorio
+## Tecnologías utilizadas
 
-```text
-proyecto-nombre/
-├── src/
-│   ├── components/
-│   │   ├── auth/          # Vistas y lógica de autenticación (login.html, login.js)
-│   │   ├── chat/          # Interfaz conversacional del Copilot (chat.html, chat.js)
-│   │   └── shared/        # Utilidades compartidas y persistencia (Save.js)
-│   ├── styles/            # Hojas de estilo modulares (styles.css, style.css)
-│   ├── config/            # Configuraciones y credenciales de servicios
-│   ├── assets/            # Recursos estáticos (imágenes, logos, iconos)
-│   └── main.js            # Lógica central e integraciones de la landing page
-├── index.html             # Punto de entrada principal (Landing Page en la raíz)
-├── .gitignore             # Archivos excluidos del control de versiones
+| Tecnología | Uso |
+|------------|-----|
+| HTML | Estructura de las páginas |
+| CSS | Estilos visuales y modo claro/oscuro |
+| JavaScript | Interactividad y lógica de la interfaz |
+| Visual Studio Code | Editor de código utilizado |
+| GitHub | Publicación y control de versiones |
+
+> Si el proyecto usa otras herramientas (API de IA, Google Auth, Firebase, etc.), agrégalas a esta tabla.
+
+## Estructura del proyecto
+
+```
+HACKATHON/
+├── img/
+│   ├── inicio.png
+│   └── login.png
+├── index.html
+├── script.js
+├── style.css
 └── README.md
+```
+
+## Requisitos previos
+
+Antes de ejecutar el proyecto, se recomienda tener:
+
+- Un navegador web actualizado (Chrome, Edge o Firefox).
+- Git (para clonar el repositorio).
+- Visual Studio Code con la extensión *Live Server* (opcional).
+
+## Cómo ejecutar el proyecto
+
+### 1. Descargar o clonar el repositorio
+
+```bash
+git clone https://github.com/DuvansX/HACKATHON.git
+```
+
+Luego entrar a la carpeta del proyecto:
+
+```bash
+cd HACKATHON
+```
+
+También se puede descargar el repositorio como archivo `.zip` desde GitHub y descomprimirlo.
+
+### 2. Abrir el proyecto
+
+- **Opción A:** hacer doble clic en `index.html` para abrirlo en el navegador.
+- **Opción B:** en Visual Studio Code, clic derecho sobre `index.html` y elegir **Open with Live Server**.
+
+## Notas importantes
+
+- Las imágenes deben estar en la carpeta `img/` para que se vean en el README y en la página.
+- Si algo no carga, verifica que `index.html`, `script.js` y `style.css` estén en la misma carpeta.
+- Algunas funciones (como el inicio de sesión con Google) pueden requerir conexión a internet.
+
+## Posibles errores comunes
+
+**Las imágenes no se ven en el README**
+Verifica que los archivos estén en `img/` y que los nombres coincidan exactamente (`inicio.png`, `login.png`).
+
+**La página se ve sin estilos**
+Revisa que `style.css` esté en la misma carpeta que `index.html`.
+
+## Demo en línea
+
+Próximamente: [agregar enlace de GitHub Pages].
+
+## Equipo
+
+- [DuvansX](https://github.com/DuvansX)
+- [Agregar nombres de los demás integrantes]
+
+## Estado del proyecto
+
+Proyecto académico desarrollado para un hackathon, en desarrollo.
