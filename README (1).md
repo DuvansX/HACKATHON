@@ -49,7 +49,7 @@ La pantalla de acceso permite:
 ## Capturas del proyecto
 
 ### Inicio
-![Página de inicio](img/inicio.png)
+![Página de inicio](Captura de pantalla 2026-11-18 114120.png)
 
 ### Inicio de sesión
 ![Inicio de sesión](img/login.png)
